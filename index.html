@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title></title>
+</head>
+<body>
+	<div style="background-color: black; height: 130px; width: 1880px; position: absolute; left: 0px; top: 0px;"></div>
+	<div style="background-color: black; height: 130px; width: 1880px; position: absolute; left: 0px; top: 809px;"></div>
+	<img src="bg.jpg" style="height: 900px; width: 1870px; left: 0">
+	<div style="background-color: indianred; height: 200px; width: 200px; left: 550px; top: 350px; position: absolute;"> 
+		<div class="choice-player-1" style="height: 200px; width: 200px; background-size: 100% 100%"></div>
+	</div>
+	<div style="background-color: #f2ce3f; height: 200px; width: 200px; left: 850px; top: 350px; position: absolute;"> </div>
+	<div style="background-color: steelblue; height: 200px; width: 200px; left: 1150px; top: 350px; position: absolute;"> 
+		<div class="choice-player-2" style="height: 200px; width: 200px; background-size: 100% 100%"></div>
+	</div>
+	<h3 style="left: 550px; top: 310px; position: absolute;">PLAYER 1</h3>
+	<h3 style="left: 1150px; top: 310px; position: absolute;">PLAYER 2</h3>
+	<h3 style="left: 550px; top: 540px; position: absolute;">ROCK → A</h3>
+	<h3 style="left: 550px; top: 560px; position: absolute;">SCISSORCE → S</h3>
+	<h3 style="left: 550px; top: 580px; position: absolute;">PAPER → D</h3>
+
+	<h3 style="left: 1150px; top: 540px; position: absolute;">ROCK → J</h3>
+	<h3 style="left: 1150px; top: 560px; position: absolute;">SCISSORCE → K</h3>
+	<h3 style="left: 1150px; top: 580px; position: absolute;">PAPER → L</h3>
+
+	<h1 class="info" style="position: absolute; left: 850px; top: 320px"><br>THE<br>FIRST<br>PLAYER<br>GOES!</h1>
+
+
+	<script>
+	let player1 = true;
+	let player2 = false;
+	let choice1 = null;
+	let choice2 = null;
+	let info = document.querySelector(".info");
+	let cp1 = document.querySelector(".choice-player-1");
+	let cp2 = document.querySelector(".choice-player-2");
+
+	document.addEventListener("keydown", function(arg){
+	if(player1 == true && player2 == false){
+		if(arg.code == "KeyA"){
+			 player1 = false;
+			 player2 = true;
+			 choice1 = "rock";
+			 info.innerHTML = "<br>THE<br>SECOND<br>PLAYER<br>GOES!";
+			 setTimeout(qw, 5000);
+			 setTimeout(finish, 8000)
+		}else if(arg.code == "KeyS"){
+			 player1 = false;
+			 player2 = true;
+			 choice1 = "scissors";
+			 info.innerHTML = "<br>THE<br>SECOND<br>PLAYER<br>GOES!";
+			 setTimeout(qw, 5000);
+			 setTimeout(finish, 8000)
+		}else if(arg.code == "KeyD"){
+			 player1 = false;
+			 player2 = true;
+			 choice1 = "paper";
+			 info.innerHTML = "<br>THE<br>SECOND<br>PLAYER<br>GOES!";
+			 setTimeout(qw, 5000);
+			 setTimeout(finish, 8000)
+		}
+	}
+
+	if(player1 == false && player2 == true){
+		if(arg.code == "KeyJ"){
+			 choice2 = "rock";
+			 info.innerHTML = "<br>WAIT<br>FOR<br>A<br>WHILE...";
+			 setTimeout(qw, 5000);
+			 setTimeout(finish, 8000)
+		}else if(arg.code == "KeyK"){
+			 choice2 = "scissors";
+			 info.innerHTML = "<br>WAIT<br>FOR<br>A<br>WHILE...";
+			 setTimeout(qw, 5000);
+			 setTimeout(finish, 8000)
+		}else if(arg.code == "KeyL"){
+			 choice2 = "paper";
+			 info.innerHTML = "<br>WAIT<br>FOR<br>A<br>WHILE...";
+			 setTimeout(qw, 5000);
+			 setTimeout(finish, 8000)
+		}
+	}
+
+
+});
+
+	function qw(){
+	if(choice1 == "rock"){
+		cp1.style.backgroundImage = "url(as.png)";
+	}else if(choice1 == "scissors"){
+		cp1.style.backgroundImage = "url(qwe.png)";
+	}else if(choice1 == "paper"){
+		cp1.style.backgroundImage = "url(wer.png)";
+	}
+
+
+	if(choice2 == "rock"){
+		cp2.style.backgroundImage = "url(as.png)";
+	}else if(choice2 == "scissors"){
+		cp2.style.backgroundImage = "url(qwe.png)";
+	}else if(choice2 == "paper"){
+		cp2.style.backgroundImage = "url(wer.png)";
+	}
+}
+
+function finish(){
+	if(choice1 == choice2){
+		alert("draw!");
+	}else if(choice1 == "rock" && choice2 == "scissors"){
+		alert("first player win!");
+	}else if(choice1 == "scissors" && choice2 == "paper"){
+		alert("first player win!");
+	}else if(choice1 == "paper" && choice2 == "rock"){
+		alert("first player win!");
+	}
+	else{
+		alert("second player win!")
+	}
+}	
+	</script>
+</body>
+</html>
